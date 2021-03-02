@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonLink } from '../../../Elements/index';
+import { ButtonBigLink } from '../../../Elements/Button';
 import {
   Wrap,
   Title,
@@ -48,7 +48,7 @@ export const HowWorks = () => {
               <ItemText>Congratulations on securing your loved ones financial future!</ItemText>
             </StepItem>
           </WorkStep>
-          <ButtonLink link="/" text="Get my price" buttonType="big" position="center" />
+          <ButtonBigLink link="/" text="Get my price" buttonType="big" position="center" />
         </div>
       </Wrap>
     </section>

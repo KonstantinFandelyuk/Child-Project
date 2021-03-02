@@ -1,12 +1,13 @@
 import { makeAutoObservable, action } from 'mobx';
 import { fetchUpdateCurrentUser } from '../api/Api_Auth';
-import { fetchCompanyCreate } from '../api/Api_UserCabinet';
+import { fetchCompanyCreate, fetchCurrentCatalogList } from '../api/Api_UserCabinet';
 import GlobalStore from './GlobalStore';
 const { switchLoading } = GlobalStore;
-// import { toJS } from "mobx";
+import { toJS } from 'mobx';
 
 class UserCabinetStore {
   placeModal = false;
+  myCatalogList = [];
   constructor() {
     makeAutoObservable(this, {
       changeInfoUser: action.bound,
@@ -28,6 +29,16 @@ class UserCabinetStore {
     const response = await fetchCompanyCreate(data);
     if (response) {
       this.placeModal = false;
+      switchLoading(false);
+    }
+  }
+
+  async showMeMyPlace() {
+    const id = 'kd0jX0QD4A';
+    switchLoading(true);
+    const response = await fetchCurrentCatalogList(id);
+    if (response) {
+      this.myCatalogList = response.results;
       switchLoading(false);
     }
   }

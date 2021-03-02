@@ -5,10 +5,12 @@ import AuthStore from '../../../store/AuthStore';
 import CatalogStore from '../../../store/CatalogStore';
 import UserCabinetStore from '../../../store/UserCabinetStore';
 import { createObjectPlace, previewPhoto } from '../../helpers/helpers';
-import { Input, ButtonForm, InputPhone, TextArea, SelectCategory } from '../../Elements';
+import { Input, InputPhone, SelectCategory, TextArea } from '../../Elements/Input';
+import { ButtonForm } from '../../Elements/Button';
 import {
   AddPlace,
   Title,
+  CloseButton,
   AdditionalInfo,
   Row,
   RowTop,
@@ -39,7 +41,7 @@ export const UserPlaceAdd = observer(() => {
   const [prevImage, setPrevImage] = useState('');
   const { objectId } = AuthStore.currentUser;
   const { getCatalogList } = CatalogStore;
-  const { createNewPlace } = UserCabinetStore;
+  const { createNewPlace, openModalPlace } = UserCabinetStore;
 
   const handlerPlaceAdd = (values, actions) => {
     const data = createObjectPlace(values, objectId, prevImage);
@@ -47,10 +49,31 @@ export const UserPlaceAdd = observer(() => {
     getCatalogList();
     actions.resetForm();
   };
-
+  const createPlacePhoto = () => {
+    return (
+      <>
+        <UserPhoto>
+          <label htmlFor="userPhoto">
+            Изменить фото
+            <input
+              type="file"
+              name="userPhoto"
+              id="userPhoto"
+              multiple
+              accept=".jpg, .jpeg, .png"
+              onChange={(e) => previewPhoto(e.target, setPrevImage)}
+            />
+          </label>
+          {prevImage && <img src={prevImage} alt="" />}
+          <img src="/images/user_cabinet/profile/bg.jpg" alt="" />
+        </UserPhoto>
+      </>
+    );
+  };
   return (
     <AddPlace>
       <Title>Добавление информации о заведении</Title>
+      <CloseButton onClick={(e) => openModalPlace(false)}>x</CloseButton>
       <Formik
         initialValues={{
           companyName: '',
@@ -76,20 +99,8 @@ export const UserPlaceAdd = observer(() => {
                 <SelectCategory type="select" name="companyCategory" data={typePlace} />
               </div>
               <div className="row-item">
-                <UserPhoto>
-                  <label htmlFor="userPhoto">
-                    Изменить фото
-                    <input
-                      type="file"
-                      name="userPhoto"
-                      id="userPhoto"
-                      onChange={(e) => previewPhoto(e.target, setPrevImage)}
-                    />
-                  </label>
-                  {prevImage && <img src={prevImage} alt="" />}
-                  <img src="/images/user_cabinet/profile/bg.jpg" alt="" />
-                </UserPhoto>
-                {prevImage && <BtnCancel onClick={(e) => setPrevImage('')}>Отменить</BtnCancel>}
+                {createPlacePhoto(0)}
+                {prevImage && <BtnCancel onClick={() => setPrevImage('')}>Отменить</BtnCancel>}
               </div>
             </RowTop>
             <Input type="text" name="companyName" placeholder=" " label="Название заведения" />

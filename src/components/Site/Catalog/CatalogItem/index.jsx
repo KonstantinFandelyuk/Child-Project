@@ -35,9 +35,7 @@ export const CatalogItem = ({ item }) => {
     <Item onClick={(e) => handlerOpenLink()}>
       <Link to={`/catalog/company/${converUrl(companyName)}`}>
         <Name>{companyName}</Name>
-        <Rating>
-          ⭐{companyRating} {`${companyFeedback.length} отзывов`}
-        </Rating>
+        <Rating>⭐{companyRating} </Rating>
         <Descriptions>{companyAbout}</Descriptions>
         <CompanyImage src={companyPhoto} alt="" />
         <PhoneBlock>

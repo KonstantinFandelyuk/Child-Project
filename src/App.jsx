@@ -13,6 +13,7 @@ import AuthStore from './store/AuthStore';
 import GlobalStore from './store/GlobalStore';
 import { UserPlaceAdd } from './components/UserCabinet/UserPlaceAdd';
 import UserCabinetStore from './store/UserCabinetStore';
+import { Copyright } from './components/Site/Copyright';
 
 export const App = observer(() => {
   const { placeModal } = UserCabinetStore;
@@ -30,6 +31,7 @@ export const App = observer(() => {
       <Header />
       <Routers token={sessionToken} />
       <Footer />
+      <Copyright />
       {loading && <Loading />}
       {modalLogin && <LogIn />}
       {modalReg && <Registartions />}

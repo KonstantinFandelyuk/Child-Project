@@ -13,6 +13,7 @@ export const AddPlace = styled.div`
   padding: 30px;
   border: 1px solid #ff6336;
   border-radius: 3px;
+  z-index: 1;
 `;
 
 export const Title = styled.div`
@@ -20,6 +21,22 @@ export const Title = styled.div`
   font-size: 3rem;
   color: #1d253c;
   margin-bottom: 35px;
+`;
+
+export const CloseButton = styled.button`
+  top: -11px;
+  right: -11px;
+  position: absolute;
+  font-weight: 600;
+  background: white;
+  border: 1px solid #ff6336;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const AdditionalInfo = styled(Title)`
@@ -37,8 +54,15 @@ export const RowTop = styled(Row)`
   width: 500px;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   margin-bottom: 20px;
+  & .row-item:nth-child(3) {
+    display: flex;
+    flex-basis: 100%;
+    justify-content: space-between;
+  }
 `;
+
 export const SelectTitle = styled.div`
   margin-bottom: 10px;
 `;

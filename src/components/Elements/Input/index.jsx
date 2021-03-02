@@ -1,18 +1,15 @@
 import React from 'react';
 import { Field, ErrorMessage } from 'formik';
 import MaskedInput from 'react-text-mask';
-import { phoneNumberMask } from '../helpers/helpers';
+import { phoneNumberMask } from '../../helpers/helpers';
 import {
   InputStyle,
   InputElement,
   InputElementPhone,
   TextAreaStyle,
   Label,
-  ButtonElement,
   Error,
   SelectStyle,
-  ButtonNavLink,
-  ButtonProfileStyle,
 } from './style';
 const shortid = require('shortid');
 
@@ -98,32 +95,4 @@ export const SelectCategory = ({ type, name, data }) => {
       }}
     </Field>
   );
-};
-
-export const Button = ({ type, text, setFunction }) => {
-  return (
-    <ButtonElement type={type} onClick={(e) => setFunction()}>
-      {text}
-    </ButtonElement>
-  );
-};
-
-export const ButtonForm = ({ type, text, buttonWidth }) => {
-  return (
-    <ButtonElement type={type} buttonWidth={buttonWidth}>
-      {text}
-    </ButtonElement>
-  );
-};
-
-export const ButtonLink = ({ link, text, buttonType, position }) => {
-  return (
-    <ButtonNavLink to={link} viwe={buttonType} position={position}>
-      {text}
-    </ButtonNavLink>
-  );
-};
-
-export const ButtonProfile = ({ link }) => {
-  return <ButtonProfileStyle to={link}></ButtonProfileStyle>;
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import { ButtonLink } from '../../../Elements/Button';
 import ImageBlock from '../../../../images/site/sections/help-parents/bg.svg';
 import { Block, BlockItem, Title, HeroTitle, Description, BlockPic, Information } from './style';
 
@@ -14,7 +15,7 @@ export const HelpParents = () => {
               Bella, our smart bot, can guide you to your perfect policy. There’s also human help
               whenever you need it.
             </Description>
-            <a href="#">Get help</a>
+            <ButtonLink link="/catalog" text="Get help" colorpic="#007189" />
           </BlockItem>
           <BlockItem>
             <BlockPic>

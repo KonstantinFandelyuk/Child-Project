@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Formik, Form } from 'formik';
-import { Input, ButtonForm, InputPhone } from '../../Elements';
+import { Input, InputPhone } from '../../Elements/Input';
+import { ButtonForm } from '../../Elements/Button';
 import UserCabinetStore from '../../../store/UserCabinetStore';
 import AuthStore from '../../../store/AuthStore';
 import { previewPhoto } from '../../helpers/helpers';

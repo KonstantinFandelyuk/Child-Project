@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite';
 import { NavLink } from 'react-router-dom';
 import LogoImage from '../../../images/site/header/logo.svg';
 import AuthStore from '../../../store/AuthStore';
-import { Button, ButtonProfile } from '../../Elements';
+import { Button, ButtonProfile } from '../../Elements/Button';
 import { HeaderBlock, HeaderMemu, MenuItem, MenuItemList, Navigation, Logo } from './style';
 import UserCabinetStore from '../../../store/UserCabinetStore';
 

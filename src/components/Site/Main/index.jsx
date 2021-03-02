@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonLink } from '../../Elements/index';
+import { ButtonBigLink } from '../../Elements/Button';
 import { MainBlock, Wrapp, Title, HeroTitle, Descriptiom } from './style';
 
 export const Main = () => {
@@ -12,7 +12,7 @@ export const Main = () => {
           <Descriptiom className="descriptiom">
             Secure your family's financial future, in as little as 10 minutes.
           </Descriptiom>
-          <ButtonLink link="/catalog" text="Get my price" buttonType="big" position="" />
+          <ButtonBigLink link="/catalog" text="Попробовать" buttonType="big" position="" />
         </Wrapp>
       </div>
     </MainBlock>

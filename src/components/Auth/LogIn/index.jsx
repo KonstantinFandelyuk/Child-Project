@@ -1,13 +1,14 @@
 import React from 'react';
 import { Formik, Form } from 'formik';
 import { observer } from 'mobx-react-lite';
-import { Input, ButtonForm } from '../../Elements';
+import { Input } from '../../Elements/Input';
+import { ButtonForm } from '../../Elements/Button';
 import { Login, Title } from './style';
 import AuthStore from '../../../store/AuthStore';
 
 export const LogIn = observer(() => {
   const { getLogInUser } = AuthStore;
-  
+
   const sendLogIn = (values) => {
     getLogInUser(values);
   };

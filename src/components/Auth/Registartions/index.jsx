@@ -1,11 +1,12 @@
 import React from 'react';
 import { Formik, Form } from 'formik';
-import { Registr, Title } from './style';
-import { createNewUser } from '../../helpers/helpers';
-import { Input, ButtonForm, InputPhone } from '../../Elements';
-import { RegSchema } from './validations';
 import { observer } from 'mobx-react-lite';
+import { createNewUser } from '../../helpers/helpers';
+import { RegSchema } from './validations';
+import { Input, InputPhone } from '../../Elements/Input';
+import { ButtonForm } from '../../Elements/Button';
 import AuthStore from '../../../store/AuthStore';
+import { Registr, Title } from './style';
 
 export const Registartions = observer(() => {
   const { getRegUser } = AuthStore;
