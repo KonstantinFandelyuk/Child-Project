@@ -105,3 +105,8 @@ export const converUrl = (url) => {
   const linkUrl = url.replace(/[.,%]/g, '');
   return cyrillicToTranslit.transform(linkUrl, '_').toLowerCase();
 };
+
+export const sumRatingCompany = (value, feedvackList, currentStarsValue) => {
+  const result = (value + +currentStarsValue) / (feedvackList + 1);
+  return parseInt(result);
+};

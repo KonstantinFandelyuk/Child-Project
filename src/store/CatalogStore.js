@@ -4,22 +4,30 @@ import {
   fetchCatalogCurrentItem,
   fetchFeedbackPlace,
   fetchAddFeedbackPlace,
+  fetchUpdateCompanyRating,
 } from '../api/Api_Catalog';
 import GlobalStore from './GlobalStore';
-// import { toJS } from 'mobx';
+import { toJS } from 'mobx';
 const { switchLoading } = GlobalStore;
 
 class CatalogStore {
   catalog = [];
   currentLinkItem = [];
   feedbackList = [];
+  starsValue = 0;
   constructor() {
     makeAutoObservable(this, {
       getCatalogList: action.bound,
       getCurrentcatalogItem: action.bound,
       getFeedbackPlace: action.bound,
       getAddFeedbackPlace: action.bound,
+      getStarsValue: action.bound,
+      updateRatingCompany: action.bound,
     });
+  }
+
+  getStarsValue(value) {
+    this.starsValue = value;
   }
 
   async getCatalogList() {
@@ -51,6 +59,15 @@ class CatalogStore {
   async getAddFeedbackPlace(data) {
     switchLoading(true);
     const response = await fetchAddFeedbackPlace(data);
+    if (response) {
+      switchLoading(false);
+    }
+  }
+
+  async updateRatingCompany(id, data) {
+    console.log('data', data);
+    switchLoading(true);
+    const response = await fetchUpdateCompanyRating(id, data);
     if (response) {
       switchLoading(false);
     }

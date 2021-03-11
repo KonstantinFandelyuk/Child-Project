@@ -2,6 +2,31 @@ import styled from 'styled-components';
 
 export const PlacePage = styled.div`
   padding: 40px 0;
+  form {
+    margin-bottom: 50px;
+    display: flex;
+    justify-content: space-between;
+    input {
+      width: 500px;
+      height: 40px;
+      border: none;
+      border-bottom: 1px solid gray;
+      margin-right: 20px;
+    }
+    button {
+      width: 100px;
+      height: 40px;
+      background-color: transparent;
+      border: 1px solid blue;
+      border-radius: 5px;
+      transition: 0.4s linear;
+      &:hover {
+        transition: 0.4s linear;
+        background-color: blue;
+        color: white;
+      }
+    }
+  }
 `;
 
 export const Row = styled.div`
@@ -49,4 +74,8 @@ export const AboutPlace = styled(PhonePlace)`
   margin-bottom: 15px;
 `;
 
-export const CommentsPlace = styled.div``;
+export const CommentsPlace = styled.div`
+  height: 600px;
+  /* overflow: hidden; */
+  /* overflow-y: scroll; */
+`;

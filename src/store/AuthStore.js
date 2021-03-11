@@ -9,6 +9,9 @@ class AuthStore {
   modalReg = false;
   currentUser = {};
   sessionToken = sessionStorage.getItem('_id') ? sessionStorage.getItem('_id') : this.sessionToken;
+  sessionUserID = sessionStorage.getItem('_user_id')
+    ? sessionStorage.getItem('_user_id')
+    : this.sessionToken;
 
   constructor() {
     makeAutoObservable(this, {
@@ -50,7 +53,9 @@ class AuthStore {
     const response = await fetchUserLogin(data);
     if (response.objectId) {
       this.sessionToken = response.sessionToken;
+      this.sessionUserID = response.objectId;
       sessionStorage.setItem('_id', response.sessionToken);
+      sessionStorage.setItem('_user_id', response.objectId);
       this.currentUser = response;
       this.modalLogin = false;
       switchLoading(false);

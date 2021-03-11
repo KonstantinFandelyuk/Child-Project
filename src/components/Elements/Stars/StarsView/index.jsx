@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { StarsRating, StarsImage } from './style';
-import EmptyImage from '../../../images/elements/stars/empty.svg';
-import CompleteImage from '../../../images/elements/stars/complete.svg';
+import EmptyImage from '../../../../images/elements/stars/empty.svg';
+import CompleteImage from '../../../../images/elements/stars/complete.svg';
+import { observer } from 'mobx-react-lite';
 const shortid = require('shortid');
 
-export const Stars = ({ value, sizeImage }) => {
+export const Stars = observer(({ value, sizeImage }) => {
   const [imgs, setImgs] = useState([]);
 
   useEffect(() => {
@@ -29,4 +30,4 @@ export const Stars = ({ value, sizeImage }) => {
       ))}
     </StarsRating>
   );
-};
+});

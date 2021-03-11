@@ -2,9 +2,11 @@ import React, { useEffect } from 'react';
 import { Formik, Form, Field } from 'formik';
 import { observer } from 'mobx-react-lite';
 import CatalogStore from '../../../../store/CatalogStore';
-import { Stars } from '../../../Elements/Stars';
+import { Stars } from '../../../Elements/Stars/StarsView';
+import { StartsChecked } from '../../../Elements/Stars/StartsChecked';
 import { Slider } from '../../../Elements/Slider';
 import { createNewComment } from '../../../helpers/createObjects';
+import { sumRatingCompany } from '../../../helpers/helpers';
 import {
   PlacePage,
   Row,
@@ -24,6 +26,8 @@ export const CatalogPage = observer(() => {
     getFeedbackPlace,
     feedbackList,
     getAddFeedbackPlace,
+    updateRatingCompany,
+    starsValue,
   } = CatalogStore;
   const [{ ...item }] = currentLinkItem;
   const {
@@ -40,6 +44,7 @@ export const CatalogPage = observer(() => {
     companyPhoto,
     companyRating,
     companyTags,
+    companyValueFeedback,
   } = item;
 
   useEffect(() => {
@@ -54,8 +59,16 @@ export const CatalogPage = observer(() => {
 
   const sendComments = (values) => {
     const data = createNewComment(values.userComment);
-    getAddFeedbackPlace(data);
-    getFeedbackPlace(objectId);
+    if (sessionStorage.getItem('_id')) {
+      getAddFeedbackPlace(data);
+      updateRatingCompany(objectId, {
+        companyValueFeedback: +companyValueFeedback + +starsValue,
+        companyRating: sumRatingCompany(companyValueFeedback, feedbackList.length, starsValue),
+      });
+      // getFeedbackPlace(objectId);
+    } else {
+      alert('Вы должны быть зарегестрированы');
+    }
   };
 
   return (
@@ -105,7 +118,8 @@ export const CatalogPage = observer(() => {
         >
           {({ isSubmitting, errors, touched, values }) => (
             <Form>
-              <Field type="text" name="userComment" placeholder="userComment" />
+              <StartsChecked />
+              <Field type="text" name="userComment" placeholder="Оставить комментарий" />
               <button type="submit" disabled={isSubmitting}>
                 Submit
               </button>
@@ -113,8 +127,14 @@ export const CatalogPage = observer(() => {
           )}
         </Formik>
         <CommentsPlace>
-          {feedbackList.map((item) => (
-            <div>{item.userComments}</div>
+          {feedbackList.map(({ feedbackTime, userComments, userName, userSurname }) => (
+            <div style={{ border: '1px solid gray', marginBottom: '15px' }}>
+              <div className="time">{feedbackTime}</div>
+              <div className="name">
+                {userName} {userSurname}
+              </div>
+              <div className="com">{userComments}</div>
+            </div>
           ))}
         </CommentsPlace>
       </div>

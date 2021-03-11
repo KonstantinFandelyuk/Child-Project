@@ -62,3 +62,19 @@ export const fetchAddFeedbackPlace = async (data) => {
     console.log('error :>> ', error);
   }
 };
+export const fetchUpdateCompanyRating = async (id, data) => {
+  try {
+    const response = await fetch(`${process.env.API}/classes/Company/${id}`, {
+      method: 'PUT',
+      headers: {
+        'X-Parse-Application-Id': process.env.APP_ID,
+        'X-Parse-REST-API-Key': process.env.API_KEY,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    return await response.json();
+  } catch (error) {
+    console.log('error :>> ', error);
+  }
+};
