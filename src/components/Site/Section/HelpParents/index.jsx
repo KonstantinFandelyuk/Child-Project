@@ -8,7 +8,7 @@ export const HelpParents = () => {
     <section>
       <div className="container">
         <Block>
-          <BlockItem>
+          <BlockItem data-aos="fade-left" data-aos-duration="1500">
             <Title>Technology meets service</Title>
             <HeroTitle>We're here to help</HeroTitle>
             <Description>
@@ -17,7 +17,7 @@ export const HelpParents = () => {
             </Description>
             <ButtonLink link="/catalog" text="Get help" colorpic="#007189" />
           </BlockItem>
-          <BlockItem>
+          <BlockItem data-aos="fade-right" data-aos-duration="1500">
             <BlockPic>
               <img src={ImageBlock} alt="" />
               <Information>There's also human help 👋</Information>

@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import CatalogStore from '../../../../store/CatalogStore';
 import { converUrl, hidePhoneNumber } from '../../../helpers/helpers';
@@ -14,7 +14,7 @@ import {
 } from './style';
 
 export const CatalogItem = ({ item }) => {
-  const [showNumber, setShowNumber] = useState(true);
+  const [isShowPhone, setIsShowPhone] = useState(false);
   const { getCurrentcatalogItem } = CatalogStore;
   const {
     objectId,
@@ -38,12 +38,12 @@ export const CatalogItem = ({ item }) => {
         <Name>{companyName}</Name>
         <Rating>⭐{companyRating} </Rating>
         <Descriptions>{companyAbout}</Descriptions>
-        <CompanyImage src={companyPhoto} alt="" />{' '}
+        <CompanyImage src={companyPhoto} alt="" />
       </Link>
       <PhoneBlock>
-        <Phone> {showNumber ? hidePhoneNumber(companyPhone) : companyPhone} </Phone>
-        <ShowPhone type="button" onClick={(e) => setShowNumber(!showNumber)}>
-          {showNumber ? 'Показать телефон' : 'Скрыть телефон'}
+        <Phone> {isShowPhone ? companyPhone : hidePhoneNumber(companyPhone)} </Phone>
+        <ShowPhone type="button" onClick={() => setIsShowPhone(!isShowPhone)}>
+          Показать телефон
         </ShowPhone>
       </PhoneBlock>
     </Item>

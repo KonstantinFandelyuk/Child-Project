@@ -24,7 +24,7 @@ export const HowWorks = () => {
             insurance companies. This means we can ensure reliability in paying Claims.
           </Description>
           <WorkStep>
-            <StepItem>
+            <StepItem data-aos="fade-up" data-aos-duration="2000">
               <ItemImage>
                 <img src="/src/images/site/sections/how-works/icon/1.svg" alt="" />
               </ItemImage>
@@ -33,14 +33,14 @@ export const HowWorks = () => {
                 Choose the amount that you would like to be covered for and we’ll give you a quote.
               </ItemText>
             </StepItem>
-            <StepItem>
+            <StepItem data-aos="fade-up" data-aos-duration="2000">
               <ItemImage>
                 <img src="/src/images/site/sections/how-works/icon/2.svg" alt="" />
               </ItemImage>
               <ItemName>Apply</ItemName>
               <ItemText>Answer a few questions and get your final price.</ItemText>
             </StepItem>
-            <StepItem>
+            <StepItem data-aos="fade-up" data-aos-duration="2000">
               <ItemImage>
                 <img src="/src/images/site/sections/how-works/icon/3.svg" alt="" />
               </ItemImage>

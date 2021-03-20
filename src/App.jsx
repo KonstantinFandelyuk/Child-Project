@@ -14,8 +14,11 @@ import GlobalStore from './store/GlobalStore';
 import { UserPlaceAdd } from './components/UserCabinet/UserPlaceAdd';
 import UserCabinetStore from './store/UserCabinetStore';
 import { Copyright } from './components/Site/Copyright';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export const App = observer(() => {
+  AOS.init();
   const { placeModal } = UserCabinetStore;
   const { modalLogin, modalReg, sessionToken, getCurrentUser } = AuthStore;
   const { loading } = GlobalStore;

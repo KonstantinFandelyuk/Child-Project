@@ -26,14 +26,14 @@ export const Advantage = () => {
             insurance companies. This means we can ensure reliability in paying Claims.
           </Description>
           <AdvantageTabs>
-            <TabsItem>
+            <TabsItem data-aos="flip-up" data-aos-duration="1500">
               <ItemImage>
                 <img src="./images/site/sections/advantage/rated.svg" alt="" />
               </ItemImage>
               <ItemText>Top-Rated</ItemText>
               <ItemSubText>A+ Financial Strength Rating by A.M. Best. </ItemSubText>
             </TabsItem>
-            <TabsItem>
+            <TabsItem data-aos="flip-up" data-aos-duration="1500">
               <ItemImage wooman={'wooman'}>
                 <img src="./images/site/sections/advantage/wooman.svg" alt="" />
               </ItemImage>
@@ -42,7 +42,7 @@ export const Advantage = () => {
                 We've placed millions of dollars in coverage people nationwide.
               </ItemSubText>
             </TabsItem>
-            <TabsItem>
+            <TabsItem data-aos="flip-up" data-aos-duration="1500">
               <ItemImage>
                 <img src="./images/site/sections/advantage/rating.svg" alt="" />
               </ItemImage>

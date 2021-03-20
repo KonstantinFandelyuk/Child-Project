@@ -4,7 +4,7 @@ import { Wrap, HeroTitle, SubTitle } from './style';
 
 export const GetStart = () => {
   return (
-    <section>
+    <section data-aos="flip-left" data-aos-duration="1500">
       <Wrap>
         <div className="container">
           <HeroTitle>Get Started Today.</HeroTitle>

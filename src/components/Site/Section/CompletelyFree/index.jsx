@@ -8,7 +8,7 @@ export const CompletelyFree = () => {
     <section style={{ background: '#f9f5f2' }}>
       <div className="container">
         <Block>
-          <BlockItem>
+          <BlockItem data-aos="fade-left" data-aos-duration="1500">
             <Title>You've Got This</Title>
             <HeroTitle>Everything you need— completely free</HeroTitle>
             <Description>
@@ -17,7 +17,7 @@ export const CompletelyFree = () => {
             </Description>
             <ButtonLink link="/catalog" text="Visit Learning Center" colorpic="#007189" />
           </BlockItem>
-          <BlockItem>
+          <BlockItem data-aos="fade-right" data-aos-duration="1500">
             <BlockPic>
               <img src={ImageBlock} alt="" />
               <Information>There's also human help 🤓</Information>

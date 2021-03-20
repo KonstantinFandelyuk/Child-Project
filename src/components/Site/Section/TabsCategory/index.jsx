@@ -1,5 +1,6 @@
 import React from 'react';
 import { Wrap, Title, TabsList, TabsItem, TabsIcon, TabsText } from './style';
+const shortid = require('shortid');
 
 export const TabsCategory = () => {
   const arr = [
@@ -24,7 +25,7 @@ export const TabsCategory = () => {
           <TabsList>
             {arr.map(({ icon, name }) => {
               return (
-                <TabsItem key={Math.random(new Date() / 2)}>
+                <TabsItem key={shortid.generate()} data-aos="zoom-in">
                   <TabsIcon>
                     <img src={`./images/site/sections/catalog/icon/${icon}`} alt="" />
                   </TabsIcon>
