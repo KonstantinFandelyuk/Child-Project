@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import CatalogStore from '../../../../store/CatalogStore';
-import { converUrl } from '../../../helpers/helpers';
+import { converUrl, hidePhoneNumber } from '../../../helpers/helpers';
 import {
   Item,
   Name,
@@ -14,6 +14,7 @@ import {
 } from './style';
 
 export const CatalogItem = ({ item }) => {
+  const [showNumber, setShowNumber] = useState(true);
   const { getCurrentcatalogItem } = CatalogStore;
   const {
     objectId,
@@ -37,12 +38,14 @@ export const CatalogItem = ({ item }) => {
         <Name>{companyName}</Name>
         <Rating>⭐{companyRating} </Rating>
         <Descriptions>{companyAbout}</Descriptions>
-        <CompanyImage src={companyPhoto} alt="" />
-        <PhoneBlock>
-          <Phone> {companyPhone} </Phone>
-          <ShowPhone type="button">Показать телефон</ShowPhone>
-        </PhoneBlock>
+        <CompanyImage src={companyPhoto} alt="" />{' '}
       </Link>
+      <PhoneBlock>
+        <Phone> {showNumber ? hidePhoneNumber(companyPhone) : companyPhone} </Phone>
+        <ShowPhone type="button" onClick={(e) => setShowNumber(!showNumber)}>
+          {showNumber ? 'Показать телефон' : 'Скрыть телефон'}
+        </ShowPhone>
+      </PhoneBlock>
     </Item>
   );
 };

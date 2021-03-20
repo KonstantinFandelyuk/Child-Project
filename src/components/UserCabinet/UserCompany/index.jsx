@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { observer } from 'mobx-react-lite';
 import UserCabinetStore from '../../../store/UserCabinetStore';
+const shortid = require('shortid');
 
 export const UserCompany = observer(() => {
   const { showMeMyPlace, myCatalogList } = UserCabinetStore;
@@ -15,7 +16,7 @@ export const UserCompany = observer(() => {
         <h1>UserCompany</h1>
         <div>
           {myCatalogList.map((item) => (
-            <div>{item.companyName}</div>
+            <div key={shortid.generate()}>{item.companyName}</div>
           ))}
         </div>
       </div>

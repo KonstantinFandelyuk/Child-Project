@@ -5,7 +5,6 @@ export const Item = styled.div`
   height: 410px;
   padding: 10px;
   margin: 10px;
-  cursor: pointer;
   border-radius: 4px;
   transition: 0.4s linear;
   box-shadow: 0px 0px 13px 0px rgba(0, 0, 0, 0.1);
@@ -20,6 +19,7 @@ export const Name = styled.div`
   font-weight: 500;
   color: #1d253c;
   margin-bottom: 10px;
+  cursor: pointer;
 `;
 
 export const Rating = styled.div`
@@ -30,6 +30,7 @@ export const Descriptions = styled.div`
   font-size: 1.2rem;
   margin-bottom: 10px;
   min-height: 25px;
+  cursor: pointer;
 `;
 
 export const CompanyImage = styled.img`
@@ -37,6 +38,7 @@ export const CompanyImage = styled.img`
   height: 220px;
   object-fit: cover;
   margin-bottom: 10px;
+  cursor: pointer;
 `;
 
 export const PhoneBlock = styled.div`

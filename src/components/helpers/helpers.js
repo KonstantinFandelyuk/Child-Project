@@ -24,6 +24,9 @@ export const previewPhoto = (e, setFuncion) => {
 
 export const currentDay = moment().format().slice(0, 10);
 
+export const hidePhoneNumber = (phoneNumber) =>
+  '*'.repeat(Math.min(12, phoneNumber.length)) + phoneNumber.slice(12);
+
 export const phoneNumberMask = [
   '(',
   /[0]/,
