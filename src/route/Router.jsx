@@ -9,6 +9,8 @@ import { UserFavorites } from '../components/UserCabinet/UserFavorites';
 import { UserNewsletters } from '../components/UserCabinet/UserNewsletters';
 import { UserCompany } from '../components/UserCabinet/UserCompany';
 import { CatalogPage } from '../components/Site/Catalog/CatalogPage';
+import { Articles } from '../components/Site/Articles';
+import { Article } from '../components/Site/Articles/Article';
 
 export const Routers = observer(({ token }) => {
   const viweProfileMenu = (token) => {
@@ -18,6 +20,8 @@ export const Routers = observer(({ token }) => {
           <Route exact path="/" component={Site} />
           <Route exact path="/catalog/" component={Catalog} />
           <Route path="/catalog/company/" component={CatalogPage} />
+          <Route exact path="/articles/" component={Articles} />
+          <Route path="/articles/" component={Article} />
           <Route path="/user/places/" component={UserCompany} />
           <Route path="/user/feedback/" component={UserFeedback} />
           <Route path="/user/favorites/" component={UserFavorites} />
@@ -32,6 +36,8 @@ export const Routers = observer(({ token }) => {
           <Route exact path="/" component={Site} />
           <Route exact path="/catalog/" component={Catalog} />
           <Route path="/catalog/company/" component={CatalogPage} />
+          <Route exact path="/articles/" component={Articles} />{' '}
+          <Route path="/articles/" component={Article} />
           <Redirect to="/" />
         </Switch>
       );

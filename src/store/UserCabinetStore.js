@@ -29,7 +29,9 @@ class UserCabinetStore {
 
   async createNewPlace(data) {
     switchLoading(true);
+    console.log('data :>> ', data);
     const response = await fetchCompanyCreate(data);
+    console.log('response :>> ', response);
     if (response) {
       this.placeModal = false;
       switchLoading(false);

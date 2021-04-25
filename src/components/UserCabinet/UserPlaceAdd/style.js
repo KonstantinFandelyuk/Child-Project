@@ -72,6 +72,7 @@ export const UserPhoto = styled.div`
   height: 200px;
   /* border-radius: 50%; */
   overflow: hidden;
+  overflow-y: ${({ elemScroll }) => (elemScroll ? 'hidden' : 'scroll')};
   margin: 0 auto 10px auto;
   position: relative;
   transition: 0.3s ease-out;

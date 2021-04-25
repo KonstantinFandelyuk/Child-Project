@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonBigLink } from '../../../Elements/Button';
+import { ButtonBigLink } from '../../../../Elements/Button';
 import { Wrap, HeroTitle, SubTitle } from './style';
 
 export const GetStart = () => {

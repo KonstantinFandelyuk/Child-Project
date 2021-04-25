@@ -76,7 +76,7 @@ export const CatalogPage = observer(() => {
       <div className="container">
         <Row>
           <RowItem>
-            <Slider />
+            <Slider images={companyPhoto} />
           </RowItem>
           <RowItem>
             <NamePlace>{companyName}</NamePlace>

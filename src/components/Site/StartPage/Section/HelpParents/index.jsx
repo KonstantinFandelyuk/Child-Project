@@ -1,6 +1,6 @@
 import React from 'react';
-import { ButtonLink } from '../../../Elements/Button';
-import ImageBlock from '../../../../images/site/sections/help-parents/bg.svg';
+import { ButtonLink } from '../../../../Elements/Button';
+import ImageBlock from '../../../../../images/site/sections/help-parents/bg.svg';
 import { Block, BlockItem, Title, HeroTitle, Description, BlockPic, Information } from './style';
 
 export const HelpParents = () => {

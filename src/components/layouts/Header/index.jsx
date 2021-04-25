@@ -28,8 +28,8 @@ export const Header = observer(() => {
                 Каталог
               </NavLink>
               <NavLink to="/feedback/">Отзывы</NavLink>
-              <NavLink to="/news/">Стаьи</NavLink>
-              <NavLink to="/feedback/">Отзывы</NavLink>
+              <NavLink to="/articles/">Стаьи</NavLink>
+              <NavLink to="/feedback/">О нас</NavLink>
             </Navigation>
           </MenuItem>
           {!sessionToken && (

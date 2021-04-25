@@ -67,7 +67,7 @@ input[type='submit'] {
   width: 100%;
   height: 100%;
   display: flex;
-  background-color: rgb(255 255 255 / 79%);
+  background-color: rgb(255 255 255 / 100%);
   z-index: 5;
 
   .loader {

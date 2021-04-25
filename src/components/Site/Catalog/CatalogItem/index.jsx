@@ -12,6 +12,7 @@ import {
   ShowPhone,
   PhoneBlock,
 } from './style';
+import noImg from '../../../../images/site/catalog/no-img.png';
 
 export const CatalogItem = ({ item }) => {
   const [isShowPhone, setIsShowPhone] = useState(false);
@@ -33,13 +34,15 @@ export const CatalogItem = ({ item }) => {
   };
 
   return (
-    <Item onClick={(e) => handlerOpenLink()}>
-      <Link to={`/catalog/company/${converUrl(companyName)}`}>
-        <Name>{companyName}</Name>
-        <Rating>⭐{companyRating} </Rating>
-        <Descriptions>{companyAbout}</Descriptions>
-        <CompanyImage src={companyPhoto} alt="" />
-      </Link>
+    <Item>
+      <div onClick={(e) => handlerOpenLink()}>
+        <Link to={`/catalog/company/${converUrl(companyName)}`}>
+          <Name>{companyName}</Name>
+          <Rating>⭐{companyRating} </Rating>
+          <Descriptions>{companyAbout}</Descriptions>
+          <CompanyImage src={companyPhoto.length ? companyPhoto[0].img : noImg} alt="" />
+        </Link>
+      </div>
       <PhoneBlock>
         <Phone> {isShowPhone ? companyPhone : hidePhoneNumber(companyPhone)} </Phone>
         <ShowPhone type="button" onClick={() => setIsShowPhone(!isShowPhone)}>

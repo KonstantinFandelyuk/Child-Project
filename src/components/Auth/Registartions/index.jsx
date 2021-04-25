@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik, Form } from 'formik';
 import { observer } from 'mobx-react-lite';
-import { createNewUser } from '../../helpers/helpers';
+import { createNewUser } from '../../helpers/createObjects';
 import { RegSchema } from './validations';
 import { Input, InputPhone } from '../../Elements/Input';
 import { ButtonForm } from '../../Elements/Button';

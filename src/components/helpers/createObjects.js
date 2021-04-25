@@ -27,3 +27,62 @@ export const createNewComment = (userComments) => {
     userRating: +CatalogStore.starsValue,
   };
 };
+
+export const createNewUser = ({
+  username,
+  password,
+  email,
+  firstName,
+  lastName,
+  secondName,
+  phoneNumber,
+  userBirthday,
+}) => {
+  return {
+    username,
+    password,
+    email,
+    firstName,
+    lastName,
+    secondName,
+    phoneNumber: phoneNumber.replace(/\s/g, ''),
+    userBirthday: {
+      __type: 'Date',
+      iso: userBirthday,
+    },
+  };
+};
+
+export const createObjectPlace = (
+  {
+    companyName,
+    companyAddress,
+    companyPhone,
+    companySite,
+    companyFacebook,
+    companyYoutube,
+    companyInstagram,
+    companyAbout,
+    companyCategory,
+  },
+  id,
+  prevImage,
+) => {
+  return {
+    companyName,
+    companyAddress,
+    companyPhone: companyPhone.replace(/\s/g, ''),
+    companySite,
+    companyFacebook,
+    companyYoutube,
+    companyInstagram,
+    companyAbout,
+    whoCreate: {
+      __type: 'Pointer',
+      className: '_User',
+      objectId: id,
+    },
+    companyCategory,
+    companyPhoto: prevImage,
+  };
+};

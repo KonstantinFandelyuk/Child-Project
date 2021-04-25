@@ -4,9 +4,12 @@ import { observer } from 'mobx-react-lite';
 import AuthStore from '../../../store/AuthStore';
 import CatalogStore from '../../../store/CatalogStore';
 import UserCabinetStore from '../../../store/UserCabinetStore';
-import { createObjectPlace, previewPhoto } from '../../helpers/helpers';
+import { previewGroupPhoto } from '../../helpers/helpers';
+import { createObjectPlace } from '../../helpers/createObjects';
+import { typePlace, typeCities } from '../../helpers/otherTypes';
 import { Input, InputPhone, SelectCategory, TextArea } from '../../Elements/Input';
 import { ButtonForm } from '../../Elements/Button';
+import { PhotoList } from '../../Elements/PhotoList';
 import {
   AddPlace,
   Title,
@@ -14,31 +17,13 @@ import {
   AdditionalInfo,
   Row,
   RowTop,
-  UserPhoto,
-  BtnCancel,
+  // UserPhoto,
+  // BtnCancel,
   SelectTitle,
 } from './style';
 
-const typePlace = [
-  { value: 'kindergarten', title: 'Детский садик' },
-  { value: 'school', title: 'Школа' },
-  { value: 'online-store', title: 'Интернет магазин' },
-  { value: 'Childrens clinic', title: 'Детская клиника' },
-];
-
-const typeCities = [
-  { value: 'kiev', title: 'Киев' },
-  { value: 'Odessa', title: 'Одесса' },
-  { value: 'Dnepr', title: 'Днепр' },
-  { value: 'Zaporizhzhia', title: 'Запорожье' },
-  { value: 'Lviv', title: 'Львов' },
-  { value: 'Krivoy Rog', title: 'Кривой Рог' },
-  { value: 'Nikolaev', title: 'Николаев' },
-  { value: 'Chernihiv', title: 'Чернигов' },
-];
-
 export const UserPlaceAdd = observer(() => {
-  const [prevImage, setPrevImage] = useState('');
+  const [prevImage, setPrevImage] = useState([]);
   const { objectId } = AuthStore.currentUser;
   const { getCatalogList } = CatalogStore;
   const { createNewPlace, openModalPlace } = UserCabinetStore;
@@ -48,28 +33,35 @@ export const UserPlaceAdd = observer(() => {
     createNewPlace(data);
     getCatalogList();
     actions.resetForm();
+    alert('Ваше заведение проходит модерацию');
   };
-  const createPlacePhoto = () => {
-    return (
-      <>
-        <UserPhoto>
-          <label htmlFor="userPhoto">
-            Изменить фото
-            <input
-              type="file"
-              name="userPhoto"
-              id="userPhoto"
-              multiple
-              accept=".jpg, .jpeg, .png"
-              onChange={(e) => previewPhoto(e.target, setPrevImage)}
-            />
-          </label>
-          {prevImage && <img src={prevImage} alt="" />}
-          <img src="/images/user_cabinet/profile/bg.jpg" alt="" />
-        </UserPhoto>
-      </>
-    );
-  };
+
+  // const createPlacePhoto = () => {
+  //   return (
+  //     <UserPhoto elemScroll={prevImage.length === 0 ? true : false}>
+  //       <label htmlFor="userPhoto">
+  //         Изменить фото
+  //         <input
+  //           type="file"
+  //           name="userPhoto"
+  //           id="userPhoto"
+  //           multiple
+  //           accept=".jpg, .jpeg, .png"
+  //           onChange={(e) => previewGroupPhoto(e, setPrevImage)}
+  //         />
+  //       </label>
+  //       {prevImage &&
+  //         prevImage.map(({ img, id }) => (
+  //           <div key={id}>
+  //             <img src={img} alt="" key={id} />
+  //             <BtnCancel onClick={() => setPrevImage('')}>Отменить</BtnCancel>
+  //           </div>
+  //         ))}
+  //       {prevImage.length === 0 ? <img src="/images/user_cabinet/profile/bg.jpg" alt="" /> : null}
+  //     </UserPhoto>
+  //   );
+  // };
+
   return (
     <AddPlace>
       <Title>Добавление информации о заведении</Title>
@@ -98,10 +90,8 @@ export const UserPlaceAdd = observer(() => {
                 <SelectTitle>Выбирите тип заведения</SelectTitle>
                 <SelectCategory type="select" name="companyCategory" data={typePlace} />
               </div>
-              <div className="row-item">
-                {createPlacePhoto(0)}
-                {prevImage && <BtnCancel onClick={() => setPrevImage('')}>Отменить</BtnCancel>}
-              </div>
+              <PhotoList setPrevImage={setPrevImage} prevImage={prevImage} />
+              {/* <div className="row-item">{createPlacePhoto()}</div> */}
             </RowTop>
             <Input type="text" name="companyName" placeholder=" " label="Название заведения" />
             <Input type="text" name="companyAddress" placeholder=" " label="Адрес заведения" />

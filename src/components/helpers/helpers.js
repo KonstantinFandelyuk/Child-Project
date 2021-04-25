@@ -1,6 +1,7 @@
 import moment from 'moment';
 import CyrillicToTranslit from 'cyrillic-to-translit-js';
 const cyrillicToTranslit = new CyrillicToTranslit();
+const shortid = require('shortid');
 
 export const switchDateFormat = (date) => {
   const arr = date.split('-');
@@ -10,7 +11,17 @@ export const switchDateFormat = (date) => {
 export const previewPhoto = (e, setFuncion) => {
   let reader = new FileReader();
   reader.onload = (ev) => setFuncion(ev.target.result);
-  reader.readAsDataURL(e.files[0]);
+  reader.readAsDataURL(e.target.files[0]);
+};
+
+export const previewGroupPhoto = (e, setFuncion) => {
+  const photoList = [...e.target.files].slice(0, 4);
+  for (let i = 0; i < photoList.length; i++) {
+    let reader = new FileReader();
+    reader.onload = (ev) =>
+      setFuncion((prev) => [...prev, { id: shortid.generate(), img: ev.target.result }]);
+    reader.readAsDataURL(e.target.files[i]);
+  }
 };
 
 // export const uploadPhoto = async (files) => {
@@ -44,65 +55,6 @@ export const phoneNumberMask = [
   /\d/,
   /\d/,
 ];
-
-export const createNewUser = ({
-  username,
-  password,
-  email,
-  firstName,
-  lastName,
-  secondName,
-  phoneNumber,
-  userBirthday,
-}) => {
-  return {
-    username,
-    password,
-    email,
-    firstName,
-    lastName,
-    secondName,
-    phoneNumber: phoneNumber.replace(/\s/g, ''),
-    userBirthday: {
-      __type: 'Date',
-      iso: userBirthday,
-    },
-  };
-};
-
-export const createObjectPlace = (
-  {
-    companyName,
-    companyAddress,
-    companyPhone,
-    companySite,
-    companyFacebook,
-    companyYoutube,
-    companyInstagram,
-    companyAbout,
-    companyCategory,
-  },
-  id,
-  prevImage,
-) => {
-  return {
-    companyName,
-    companyAddress,
-    companyPhone: companyPhone.replace(/\s/g, ''),
-    companySite,
-    companyFacebook,
-    companyYoutube,
-    companyInstagram,
-    companyAbout,
-    whoCreate: {
-      __type: 'Pointer',
-      className: '_User',
-      objectId: id,
-    },
-    companyCategory,
-    companyPhoto: prevImage,
-  };
-};
 
 export const converUrl = (url) => {
   const linkUrl = url.replace(/[.,%]/g, '');
