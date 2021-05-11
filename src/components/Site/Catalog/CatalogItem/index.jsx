@@ -39,7 +39,7 @@ export const CatalogItem = ({ item }) => {
         <Link to={`/catalog/company/${converUrl(companyName)}`}>
           <Name>{companyName}</Name>
           <Rating>⭐{companyRating} </Rating>
-          <Descriptions>{companyAbout}</Descriptions>
+          <Descriptions>{companyAbout.slice(0, 70)}...</Descriptions>
           <CompanyImage src={companyPhoto.length ? companyPhoto[0].img : noImg} alt="" />
         </Link>
       </div>

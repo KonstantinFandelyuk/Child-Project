@@ -18,6 +18,7 @@ import {
   AboutPlace,
   CommentsPlace,
 } from './style';
+const shortid = require('shortid');
 
 export const CatalogPage = observer(() => {
   const {
@@ -128,7 +129,10 @@ export const CatalogPage = observer(() => {
         </Formik>
         <CommentsPlace>
           {feedbackList.map(({ feedbackTime, userComments, userName, userSurname }) => (
-            <div style={{ border: '1px solid gray', marginBottom: '15px' }}>
+            <div
+              style={{ border: '1px solid gray', marginBottom: '15px' }}
+              key={shortid.generate()}
+            >
               <div className="time">{feedbackTime}</div>
               <div className="name">
                 {userName} {userSurname}

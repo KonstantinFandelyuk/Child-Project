@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { previewGroupPhoto } from '../../helpers/helpers';
 import { UserPhoto, BtnCancel } from './style';
 

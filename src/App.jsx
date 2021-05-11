@@ -16,6 +16,7 @@ import UserCabinetStore from './store/UserCabinetStore';
 import { Copyright } from './components/Site/Copyright';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { TestingComponets } from './components/testingComponets';
 
 export const App = observer(() => {
   AOS.init();
@@ -32,6 +33,7 @@ export const App = observer(() => {
     <ThemeProvider theme={{ mode: SwitchTheme.themeName }}>
       <GlobalStyle />
       <Header />
+      {/* <TestingComponets /> */}
       <Routers token={sessionToken} />
       <Footer />
       <Copyright />
